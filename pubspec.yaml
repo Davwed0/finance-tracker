@@ -1,0 +1,62 @@
+name: finance_tracker
+
+environment:
+  sdk: "^3.1.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.2
+
+flutter:
+  uses-material-design: true
+
+
+  fonts:
+    - family: IBM_Plex_Mono
+      fonts:
+        - asset: assets/fonts/IBMPlexMono-Regular.ttf
+        - asset: assets/fonts/IBMPlexMono-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/IBMPlexMono-Italic.ttf
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-ExtraLight.ttf
+          weight: 200
+        - asset: assets/fonts/IBMPlexMono-ExtraLightItalic.ttf
+          weight: 200
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/IBMPlexMono-SemiBoldItalic.ttf
+          weight: 600
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/IBMPlexMono-BoldItalic.ttf
+          weight: 700
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/IBMPlexMono-MediumItalic.ttf
+          weight: 500
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-Light.ttf
+          weight: 300
+        - asset: assets/fonts/IBMPlexMono-LightItalic.ttf
+          weight: 300
+          style: italic
+        - asset: assets/fonts/IBMPlexMono-Thin.ttf
+          weight: 100
+        - asset: assets/fonts/IBMPlexMono-ThinItalic.ttf
+          weight: 100
+          style: italic
