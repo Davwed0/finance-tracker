@@ -16,43 +16,50 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       shape: Border(),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ListTile(
-              leading: Text(
-                'TRANSACTION HISTORY',
-                style: Theme.of(context).textTheme.bodyMedium,
-                textAlign: TextAlign.left,
+      margin: const EdgeInsets.all(16),
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ListTile(
+                leading: Text(
+                  'TRANSACTION HISTORY',
+                  style: Theme.of(context).textTheme.bodyMedium,
+                  textAlign: TextAlign.left,
+                ),
+                trailing: IconButton(
+                  icon: const Icon(Icons.search),
+                  onPressed: () {},
+                )),
+            Container(
+              height: 584,
+              child: Expanded(
+                child: ValueListenableBuilder(
+                  valueListenable:
+                      Hive.box<Transaction>("transactions").listenable(),
+                  builder: (context, box, _) {
+                    return ListView.builder(
+                        itemCount: box.values.length,
+                        itemBuilder: (context, index) {
+                          final transaction = box.getAt(index) as Transaction;
+                          return TransactionCard(
+                            title: transaction.title,
+                            amount: transaction.amount,
+                            category: transaction.category,
+                            currency: transaction.currency,
+                            date: transaction.date,
+                            isExpense: transaction.isExpense,
+                            onTap: () {},
+                          );
+                        });
+                  },
+                ),
               ),
-              trailing: IconButton(
-                icon: const Icon(Icons.search),
-                onPressed: () {},
-              )),
-          Expanded(
-            child: ValueListenableBuilder(
-              valueListenable:
-                  Hive.box<Transaction>("transactions").listenable(),
-              builder: (context, box, _) {
-                return ListView.builder(
-                    itemCount: box.values.length,
-                    itemBuilder: (context, index) {
-                      final transaction = box.getAt(index) as Transaction;
-                      return TransactionCard(
-                        title: transaction.title,
-                        amount: transaction.amount,
-                        category: transaction.category,
-                        currency: transaction.currency,
-                        date: transaction.date,
-                        isExpense: transaction.isExpense,
-                        onTap: () {},
-                      );
-                    });
-              },
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }

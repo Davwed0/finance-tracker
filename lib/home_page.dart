@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'transaction_editor.dart';
 import 'transaction_list.dart';
+import 'balance.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,9 +20,7 @@ class _HomePageState extends State<HomePage> {
                 MaterialPageRoute(builder: (context) => TransactionEditor()));
           },
           child: const Icon(Icons.add)),
-      body: SafeArea(
-          child: Padding(
-              padding: const EdgeInsets.all(16), child: TransactionList())),
+      body: SafeArea(child: ListView(children: [Balance(), TransactionList()])),
     );
   }
 }

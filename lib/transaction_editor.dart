@@ -14,6 +14,8 @@ class _TransactionEditorState extends State<TransactionEditor> {
   final TextEditingController amountController = TextEditingController();
   final TextEditingController categoryController = TextEditingController();
 
+  bool isExpense = false;
+
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -39,6 +41,25 @@ class _TransactionEditorState extends State<TransactionEditor> {
               decoration: const InputDecoration(
                 labelText: 'Category',
               ),
+            ),
+            DropdownButtonFormField(
+              items: [
+                DropdownMenuItem(
+                  child: Text("Income"),
+                  value: false,
+                ),
+                DropdownMenuItem(
+                  child: Text("Expense"),
+                  value: true,
+                ),
+              ],
+              onChanged: (value) {
+                setState(() {
+                  isExpense = value as bool;
+                });
+              },
+              value: isExpense,
+              decoration: const InputDecoration(labelText: 'Transaction Type'),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
